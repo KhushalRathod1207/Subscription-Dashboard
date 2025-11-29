@@ -1,0 +1,124 @@
+.users-table-wrapper {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Search + Filter Row */
+.actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.search-input {
+    padding: 10px 14px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.filter-dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.add-btn {
+    padding: 10px 15px;
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Table */
+.table-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table thead {
+    background: #f5f6fa;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-badge.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.blocked {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Buttons */
+.edit-btn {
+    padding: 6px 12px;
+    background: #ffd966;
+    border: none;
+    margin-right: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    background: #ff6767;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: gray;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .actions-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-input,
+    .filter-dropdown,
+    .add-btn {
+        width: 100%;
+    }
+}
