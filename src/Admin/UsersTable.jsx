@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./UsersTable.css";
+import ModalAddUser from "./ModalAddUser";
 
 export default function UsersTable() {
-    // Dummy Data
+    // Dummy initial data
     const initialUsers = [
         { id: 1, name: "Khushal Rathod", email: "khushal@example.com", role: "Admin", status: "Active" },
         { id: 2, name: "Jay Patel", email: "jay@example.com", role: "User", status: "Blocked" },
@@ -15,7 +16,11 @@ export default function UsersTable() {
     const [search, setSearch] = useState("");
     const [filterStatus, setFilterStatus] = useState("All");
 
-    // Search + Filter Logic
+    // Modal state
+    const [showModal, setShowModal] = useState(false);
+    const [editUser, setEditUser] = useState(null);
+
+    // Filtered users
     const filteredUsers = users.filter((user) => {
         const matchesSearch = user.name.toLowerCase().includes(search.toLowerCase());
         const matchesStatus = filterStatus === "All" || user.status === filterStatus;
@@ -31,7 +36,7 @@ export default function UsersTable() {
         <div className="users-table-wrapper">
             <h2 className="section-title">Users Management</h2>
 
-            {/* Search + Filter Row */}
+            {/* Search + Filter + Add */}
             <div className="actions-row">
                 <input
                     type="text"
@@ -51,10 +56,15 @@ export default function UsersTable() {
                     <option value="Blocked">Blocked</option>
                 </select>
 
-                <button className="add-btn">+ Add User</button>
+                <button
+                    className="add-btn"
+                    onClick={() => { setEditUser(null); setShowModal(true); }}
+                >
+                    + Add User
+                </button>
             </div>
 
-            {/* Table */}
+            {/* Users Table */}
             <div className="table-container">
                 <table className="users-table">
                     <thead>
@@ -77,19 +87,18 @@ export default function UsersTable() {
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
                                     <td>
-                                        <span
-                                            className={`status-badge ${user.status === "Active" ? "active" : "blocked"
-                                                }`}
-                                        >
+                                        <span className={`status-badge ${user.status === "Active" ? "active" : "blocked"}`}>
                                             {user.status}
                                         </span>
                                     </td>
                                     <td>
-                                        <button className="edit-btn">Edit</button>
                                         <button
-                                            className="delete-btn"
-                                            onClick={() => handleDelete(user.id)}
+                                            className="edit-btn"
+                                            onClick={() => { setEditUser(user); setShowModal(true); }}
                                         >
+                                            Edit
+                                        </button>
+                                        <button className="delete-btn" onClick={() => handleDelete(user.id)}>
                                             Delete
                                         </button>
                                     </td>
@@ -105,6 +114,21 @@ export default function UsersTable() {
                     </tbody>
                 </table>
             </div>
+
+            {/* Modal */}
+            <ModalAddUser
+                show={showModal}
+                onClose={() => setShowModal(false)}
+                onSave={(userData) => {
+                    if (editUser) {
+                        setUsers(users.map(u => (u.id === editUser.id ? { ...u, ...userData } : u)));
+                    } else {
+                        const newUser = { ...userData, id: Date.now() };
+                        setUsers([...users, newUser]);
+                    }
+                }}
+                editData={editUser}
+            />
         </div>
     );
 }

@@ -1,0 +1,132 @@
+.inventory-wrapper {
+    margin-top: 30px;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.actions-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    width: 300px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #4f46e5;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    -webkit-overflow-scrolling: touch;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.inventory-table th {
+    background: #f9fafb;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e5e5;
+    white-space: nowrap;
+}
+
+.inventory-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f3f4f6;
+    white-space: nowrap;
+}
+
+.inventory-table tr:hover {
+    background: #f9fafb;
+}
+
+.low-stock {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.edit-input {
+    padding: 4px 8px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    width: 100%;
+    min-width: 80px;
+}
+
+.edit-btn, .delete-btn, .save-btn, .cancel-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.edit-btn {
+    background: #fbbf24;
+    color: #fff;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: #fff;
+}
+
+.save-btn {
+    background: #10b981;
+    color: #fff;
+}
+
+.cancel-btn {
+    background: #6b7280;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .search-input {
+        width: 100%;
+    }
+    
+    .actions-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .edit-btn, .delete-btn, .save-btn, .cancel-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}

@@ -35,3 +35,31 @@
     font-weight: bold;
     margin: 4px 0 0 0;
 }
+
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card-box {
+        padding: 15px;
+    }
+
+    .card-icon {
+        font-size: 30px;
+    }
+
+    .card-info h3 {
+        font-size: 15px;
+    }
+
+    .card-info p {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
